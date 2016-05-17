@@ -1,5 +1,5 @@
 # jquery.simple.validator
-#### Easy, lightweight and customizable jquery validator.
+#### Easy, lightweight simple jquery validator.
 
 
 ### Description
@@ -33,12 +33,16 @@ jQuery 1.7 or higher
 
 ### How to use it
 Just use the `data tag` standard, that is based on set `data-XXXX` where XXXX is the operation you want and `data-XXXX-msg` with the message you want.
+By default, the validator plugin creates a new span after the control with the error message. When the error is corrected, the control dissapears.
 
 **Required field validator**
 
 `data-required`: Indicates the field is required
 
 `data-required-msg`: Error message 
+
+**Specific error message control**
+`data-message-control` Id of the html control where to show the message. Can be applied in all fields.
 
 **Only numbers accepted**
 
@@ -70,6 +74,25 @@ Just use the `data tag` standard, that is based on set `data-XXXX` where XXXX is
 `data-email`: Validates valid email entry
 
 `data-email-msg`: Error message
+
+### Methods
+`$(#container).initialize(options)` Initialize the plugin with the specified options. If no options passed, will use default options.
+
+`$(#container).validate()` Start all validations
+
+`$(#field_name).validateField()` Validate just the specified field.
+
+`$(#container).registerValidator(validator_name,validation_function)` Register a custom made validator
+
+**Other helper methods**
+
+`$(#field_name).isEmail()`: Email format is valid
+
+`$.isEmail("string_email")`: Email format is valid
+
+`$(#field_name).isEmpty()`: No data introduced in field
+
+`$.isEmpty("string to check")`: No data introduced in field
 
 ### By example
 ```html
@@ -133,6 +156,14 @@ Just use the `data tag` standard, that is based on set `data-XXXX` where XXXX is
 <label>IBAN: </label><br />
 <input type="text" id="iban" data-iban data-iban-msg="IBAN format is not correct" value=""  /><br /><br />
 ```
+
+```html
+<!-- REQUIRED FIELD with message in specific control -->
+<label>Required Field with message in specific control: </label><br />
+<input type="text" id="emailse" data-required data-required-msg="Field is required in specific error" data-message-control="specificError"/><br /><br />
+<span style="color:orangered;" id="specificError"></span><br/><br/>
+```
+
 
 ### Configurations
 `errorClass` (string) Css class of the error message is going to be shown. *(by default: validator_error)*
