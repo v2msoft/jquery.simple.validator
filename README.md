@@ -1,5 +1,5 @@
 # jquery.simple.validator
-#### Easy, lightweight simple jquery validator.
+#### Easy, lightweight and customizable jquery validator.
 
 
 ### Description
@@ -86,6 +86,7 @@ Just use the `data tag` standard, that is based on set `data-XXXX` where XXXX is
 
 <script type="text/javascript">
     function validate() {
+        $("#container").initialize();
         var ok = $("#container").validate();
         if (!ok)  alert("There are errors");
         else alert("Form is ok");
@@ -94,7 +95,7 @@ Just use the `data tag` standard, that is based on set `data-XXXX` where XXXX is
 ```
 
 
-### By detailed example
+### All validators example
 ```html
 <!-- REQUIRED FIELD -->
 <label>Required Field: </label><br/>
@@ -131,4 +132,57 @@ Just use the `data tag` standard, that is based on set `data-XXXX` where XXXX is
 <!-- IBAN VALIDATION -->
 <label>IBAN: </label><br />
 <input type="text" id="iban" data-iban data-iban-msg="IBAN format is not correct" value=""  /><br /><br />
+```
+
+### Configurations
+`errorClass` (string) Css class of the error message is going to be shown. *(by default: validator_error)*
+
+`scrollToFirstError` (true|false) When errors are processed, scroll automatically the page till the first error. *(by default true)*
+
+`scrollToFirstElementTime` (integer) Speed in milliseconds of ths scroll *(by defualt, 1000)*
+
+`scrollToFirstElementOffset` (integer) Offset in pixels of the scroll, to leave a margin when scrolling *(by default 0)*
+
+`debug` (true|false) Show validation status in developer console *(by default false)*
+
+`dataDynamicRevalidate` (true|false) Autovalidate fields when blur *(by default false)*
+
+`validationSummary` (true|false) Activate if you want to show the errors in a central spot  *(by default false)* 
+
+`validationSummaryControl` (string) The id of the control where to show the summary
+
+How to set the options:
+
+```javascript
+$("#container").initialize({ 
+    debug: true, 
+    errorClass: 'my_css_error_class', 
+    scrollToFirstError: true,
+    scrollToFirstElementOffset : 100});
+```
+
+### How to define your own custom validators or custom errors
+The method registerValidator() receives 2 parameters
+* data-tag-validator-name:
+* function that performs validation. The functions receives as a parameter a jQuery object with the field that is being validated. Has to return true if validation is OK, or false if there is an error.
+
+Example:
+
+```javascript
+$("#container").initialize();
+
+$("#container").registerValidator("data-personal-validator",
+    function (control) {
+        if (control.val() == "ok") return true;
+        else return false;
+    });
+
+var ok = $("#container").validate();
+```
+
+### How to validate just a field
+
+```javascript
+    $("#field_id").initialize();
+    var ok = $("#field_id").validateField();
 ```
