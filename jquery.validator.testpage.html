@@ -1,0 +1,133 @@
+﻿<html>
+    <head>
+        <style>
+            body{font-family:'Open Sans';}
+            input,select { height:30px;}
+            label { font-weight:bold;}
+            .validator_error { background: url(/Content/Images/Actions/Cancelar_16x16.png) no-repeat 0 0;height: 16px;display: inline-block;color: #ea6c59 !important;background-position: left;padding-left: 19px;}
+            .GreenAcceptButton30 {background-image: url('/Content/Images/Actions/Buttons/done_24.png');background-repeat: no-repeat;background-position: 5px 3px;background-color: #629b49;height: 30px;border: 0px;color: White;font-weight: 500;font-family: "Open Sans",Arial;font-size: 14px;cursor: pointer;padding-left: 30px;border-radius: 3px;-ms-border-radius: 3px;-moz-border-radius: 3px;-webkit-border-radius: 3px;-khtml-border-radius: 3px;-webkit-transition: background-color 250ms linear;-moz-transition: background-color 250s linear;-o-transition: background-color 250ms linear;-ms-transition: background-color 250ms linear;transition: background-color 250ms linear;}
+        </style>
+        
+        <!-- FONTS -->
+        <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:300,400,600;subset=latin,latin-ext' type='text/css' media='all' />
+
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <script type="text/javascript" src="https://github.com/v2msoft/jquery.simple.validator/blob/master/jquery.simple.validator.js"></script>
+        
+        
+        <script type="text/javascript">
+            function validate() {
+                
+                $("#container").initialize({ debug: true, scrollToFirstElementOffset : 100});
+
+                $("#container").registerValidator("data-personal-validator",
+                    function (control) {
+                        if (control.val() == "ok") return true;
+                        else return false;
+                    });
+
+                var ok = $("#container").validate();
+                if (!ok) {
+                    $("#result").attr("style", "color:red;");
+                    $("#result").html("El formulario tiene fallos");
+                } else {
+                    $("#result").attr("style", "color:#629b49;")
+                    $("#result").html("Form ok");
+                }
+            }
+
+            function validationSummary() {
+                $("#container").initialize({ debug: true, validationSummary: true, validationSummaryControl: "validationSummaryDiv", scrollToFirstElementOffset: 100 });
+                var ok = $("#container").validate();
+            }
+
+            function autovalidate() {
+                $("#container").initialize(
+                    {
+                        debug: true,
+                        dataDynamicRevalidate: true
+                    });
+            }
+
+            function validateField() {
+                $("#emailse").initialize({ debug: true });
+                var ok = $("#emailse").validateField();
+                
+                if (!ok) {
+                    $("#result").attr("style", "color:red;")
+                    $("#result").html("El campo específico es incorrecto");
+                } else {
+                    $("#result").attr("style", "color:#629b49;")
+                    $("#result").html("Campo específico OK");
+                }
+            }
+
+            
+        </script>
+    </head>
+    <body style="background-color:white;text-align:left;padding-left:100px;padding-top:50px;">
+        <div id="container">
+
+            <div id="validationSummaryDiv" style="border:1px solid red;display:none;"></div>
+
+            <!-- REQUIRED FIELD -->
+            <label>Required Field: </label><br/>
+            <input type="text" id="required_field_control" data-required data-required-msg="Field is required" /><br /><br/>
+
+
+            <!-- ONLY NUMBERS -->
+            <label>Only Numbers (Acepta . , -): </label><br />
+            <input type="text" id="phone" data-only-numbers data-only-numbers-msg="Solo números" /><br /><br />
+
+            <!-- ONLY NUMBERS AND REQUIRED FIELD -->
+            <label>Only Numbers and required</label><br />
+            <input type="text" id="phone2" data-required data-required-msg="Field is required" data-only-numbers data-only-numbers-msg="Solo números" /><br /><br />
+
+            
+            <!-- DATE FORMAT VALIDATOR -->
+            <label>Date format (dd/mm/yyyy): </label><br />
+            <input type="text" id="date" data-date-format="dd/MM/yyyy" data-date-format-separator="/" data-date-format-msg="El formato de fecha no es correcto" value="11/01/2016" /><br /><br />
+
+
+            <!-- select a value -->
+            <select id="select" data-select-value-different="0" data-select-value-different-msg="Debes seleccionar una opcion">
+                <option value="0">Selecciona un valor</option>
+                <option value="1">Un valor cualquiera</option>
+            </select><br/><br />
+
+            <!-- REQUIRED FIELD with message in specific control -->
+            <fieldset>
+                <legend>Required Field with message in specific control: </legend><br />
+                <input type="text" id="emailse" data-required data-required-msg="Field is required in specific error" data-message-control="specificError" /><br /><br />
+                <span style="color:orangered;" id="specificError"></span><br />
+                <input class="GreenAcceptButton30" type="button" value="Validate specific Field" onclick='javascript:validateField();' /><br />
+            </fieldset><br/><br />
+
+            <!-- IBAN VALIDATION -->
+            <label>IBAN: </label><br />
+            <input type="text" id="iban" data-iban data-iban-msg="IBAN fail" value="ES78-2100-0643-0202-0017-2112"  /><br /><br />
+
+
+            <!-- EMAIL VALIDATION -->
+            <label>EMAIL: </label><br />
+            <input type="email" id="email" data-email data-email-msg="Email is not correct" value="" /><br /><br />
+            
+            <!-- PERSONAL VALIDATOR -->
+            <label>CUSTOM VALIDATOR: Text should be "ok" </label><br />
+            <input type="text" id="own_validator" data-personal-validator data-personal-validator-msg="The text is not ok" value="" /><br /><br />
+
+
+        </div>
+        
+        
+        
+        <div style="text-align:center">
+            
+            <input class="GreenAcceptButton30" type="button" value="Autovalidate" onclick='javascript:autovalidate();' />&nbsp;&nbsp;&nbsp;
+            <input class="GreenAcceptButton30" type="button" value="Validate" onclick='javascript:validate();' />&nbsp;&nbsp;&nbsp;
+            <input class="GreenAcceptButton30" type="button" value="Validate with summary" onclick='javascript:validationSummary();' />&nbsp;&nbsp;&nbsp;
+        </div>
+        <h1 id="result"></h1>
+    </body>
+</html>
