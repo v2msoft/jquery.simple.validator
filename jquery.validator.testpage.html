@@ -1,19 +1,20 @@
-﻿<html>
+﻿<!DOCTYPE html>
+<html>
     <head>
         <style>
             body{font-family:'Open Sans';}
             input,select { height:30px;}
             label { font-weight:bold;}
-            .validator_error { background: url(/Content/Images/Actions/Cancelar_16x16.png) no-repeat 0 0;height: 16px;display: inline-block;color: #ea6c59 !important;background-position: left;padding-left: 19px;}
-            .GreenAcceptButton30 {background-image: url('/Content/Images/Actions/Buttons/done_24.png');background-repeat: no-repeat;background-position: 5px 3px;background-color: #629b49;height: 30px;border: 0px;color: White;font-weight: 500;font-family: "Open Sans",Arial;font-size: 14px;cursor: pointer;padding-left: 30px;border-radius: 3px;-ms-border-radius: 3px;-moz-border-radius: 3px;-webkit-border-radius: 3px;-khtml-border-radius: 3px;-webkit-transition: background-color 250ms linear;-moz-transition: background-color 250s linear;-o-transition: background-color 250ms linear;-ms-transition: background-color 250ms linear;transition: background-color 250ms linear;}
+            .validator_error { margin-left: 10px;background: url(https://docs.atlassian.com/aui/5.0-m7/AUI/css/atlassian/images/icons/messages/icon-error.png) no-repeat 0 0;height: 16px;display: inline-block;color: #ea6c59 !important;background-position: left;padding-left: 19px;}
+            .GreenAcceptButton30 {background-image: url('http://www.myiconfinder.com/uploads/iconsets/24-24-583f916fff606f7649d9859ca5097961.png');background-repeat: no-repeat;background-position: 5px 3px;background-color: #629b49;height: 30px;border: 0px;color: White;font-weight: 500;font-family: "Open Sans",Arial;font-size: 14px;cursor: pointer;padding-left: 30px;border-radius: 3px;-ms-border-radius: 3px;-moz-border-radius: 3px;-webkit-border-radius: 3px;-khtml-border-radius: 3px;-webkit-transition: background-color 250ms linear;-moz-transition: background-color 250s linear;-o-transition: background-color 250ms linear;-ms-transition: background-color 250ms linear;transition: background-color 250ms linear;}
         </style>
         
         <!-- FONTS -->
         <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:300,400,600;subset=latin,latin-ext' type='text/css' media='all' />
 
 
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-        <script type="text/javascript" src="https://github.com/v2msoft/jquery.simple.validator/blob/master/jquery.simple.validator.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdn.rawgit.com/v2msoft/jquery.simple.validator/master/jquery.simple.validator.js"></script>
         
         
         <script type="text/javascript">
@@ -124,10 +125,11 @@
         
         <div style="text-align:center">
             
-            <input class="GreenAcceptButton30" type="button" value="Autovalidate" onclick='javascript:autovalidate();' />&nbsp;&nbsp;&nbsp;
+            <input class="GreenAcceptButton30" type="button" value="Activate Autovalidation" onclick='javascript:autovalidate();' /><br/><br/><br/>
             <input class="GreenAcceptButton30" type="button" value="Validate" onclick='javascript:validate();' />&nbsp;&nbsp;&nbsp;
-            <input class="GreenAcceptButton30" type="button" value="Validate with summary" onclick='javascript:validationSummary();' />&nbsp;&nbsp;&nbsp;
+            <input class="GreenAcceptButton30" type="button" value="Validate with summary" onclick='javascript:validationSummary();' />
         </div>
         <h1 id="result"></h1>
+		<br/><br/>
     </body>
 </html>
