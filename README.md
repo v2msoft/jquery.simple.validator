@@ -20,6 +20,10 @@ The difference with other validators is that this plugin can perform validation 
 * Easy way to create a custom validator
 * Validate a group of fields, or just a single field.
 
+### External example
+
+[External easy example](https://cdn.rawgit.com/v2msoft/jquery.simple.validator/master/jquery.validator.testpage.html)
+
 ### Dependencies
 
 jQuery 1.7 or higher
