@@ -1,5 +1,5 @@
 # jquery.simple.validator
-#### Easy, lightweight simple jquery validator.
+#### Easy, lightweight and customizable jquery validator.
 
 
 ### Description
@@ -24,6 +24,10 @@ The difference with other validators is that this plugin can perform validation 
 
 jQuery 1.7 or higher
 
+### Compatibility
+* PHP, JSP, Servlets, Java, Ruby, Python, GoLang...
+* Other jQuery plugins
+* ASP.Net Web Forms, yes no problem with the single-form-architecture of asp.net because you can use other html containers than <form>
 ### How to include
 ```html
 <head>
