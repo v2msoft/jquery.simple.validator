@@ -1,0 +1,27 @@
+{
+  "name": "jquery.simple.validator",
+  "version": "1.0.0",
+  "description": "Simple, customizable, lightweight jquery plugin validator",
+  "main": "jquery.simple.validator.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/v2msoft/jquery.simple.validator.git"
+  },
+  "keywords": [
+    "jquery",
+    "jquery validator",
+    "form validator",
+    "asp.net webforms validator",
+    "email validation",
+    "numbers validation"
+  ],
+  "author": "V2MSoftware",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/v2msoft/jquery.simple.validator/issues"
+  },
+  "homepage": "https://github.com/v2msoft/jquery.simple.validator#readme"
+}
