@@ -17,8 +17,10 @@ The difference with other validators is that this plugin can perform validation 
 * Dates validator (with format definition)
 * Drowdown element selected validator
 * Numbers validator
+* Radio elements should be selected validator
 * Easy way to create a custom validator
 * Validate a group of fields, or just a single field.
+
 
 ### External example
 
@@ -50,7 +52,12 @@ By default, the validator plugin creates a new span after the control with the e
 `data-required-msg`: Error message 
 
 **Specific error message control**
+
 `data-message-control` Id of the html control where to show the message. Can be applied in all fields.
+
+**Skip validation on a field**
+
+`data-disable-validation` The control with that tag, will not be validated
 
 **Only numbers accepted**
 
@@ -82,6 +89,12 @@ By default, the validator plugin creates a new span after the control with the e
 `data-email`: Validates valid email entry
 
 `data-email-msg`: Error message
+
+**Input radio**
+
+`data-radio-selected`: The radio button should have a value selected or checked
+
+`data-radio-selected-msg`: Error message
 
 ### Methods
 `$(#container).initialize(options)` Initialize the plugin with the specified options. If no options passed, will use default options.
@@ -172,6 +185,19 @@ By default, the validator plugin creates a new span after the control with the e
 <span style="color:orangered;" id="specificError"></span><br/><br/>
 ```
 
+```html
+<!-- REQUIRED FIELD VALIDATION DISABLED -->
+<label>Required Field with validation disabled: </label><br />
+<input type="text" id="required_field_control" data-required data-required-msg="Field is required" data-disable-validation /><br /><br />
+```
+
+```html
+<!-- Radio -->
+<label>Radio should be selected: </label><br />
+<input type="radio" id="radio-control" data-radio-selected data-radio-selected-msg="You should select a radio option" data-message-control="specificErrorRadio" value="1" /> Option 1<br />
+<input type="radio" id="radio-control" value="2" /> Option 2<br />
+<span style="color:orangered;" id="specificErrorRadio"></span><br />
+```
 
 ### Configurations
 `errorClass` (string) Css class of the error message is going to be shown. *(by default: validator_error)*

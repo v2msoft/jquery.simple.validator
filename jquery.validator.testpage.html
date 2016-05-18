@@ -122,6 +122,13 @@
 			<!-- REQUIRED FIELD VALIDATION DISABLED -->
             <label>Required Field with validation disabled: </label><br />
             <input type="text" id="required_field_control" data-required data-required-msg="Field is required" data-disable-validation /><br /><br />
+			
+			<!-- Radio -->
+            <label>Radio should be selected: </label><br />
+            <input type="radio" id="radio-control" data-radio-selected data-radio-selected-msg="You should select a radio option" data-message-control="specificErrorRadio" value="1" /> Option 1<br />
+            <input type="radio" id="radio-control" value="2" /> Option 2<br />
+			<span style="color:orangered;" id="specificErrorRadio"></span><br />
+            <br /><br />
 
         </div>
         

@@ -1,6 +1,6 @@
 {
   "name": "jquery.simple.validator",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Simple, customizable, lightweight jquery plugin validator",
   "main": "jquery.simple.validator.js",
   "scripts": {

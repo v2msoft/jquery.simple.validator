@@ -53,6 +53,8 @@
 *     data-email: Validates valid email entry
 *     data-email-msg: Error message
 *
+*     data-radio-selected: Input Radio should have a selected value
+*     data-radio-selected-msg: Error message
 * */
 
 (function ($) {
@@ -75,7 +77,8 @@
         data_select_value_different: "data-select-value-different",
         data_iban: "data-iban",
         data_email: "data-email",
-        data_disable_validation: "data-disable-validation"
+        data_disable_validation: "data-disable-validation",
+        data_radio_selected: "data-radio-selected"
     };
 
     var validation_ok = true;   //Retorno, indica que por el momento todo es OK.
@@ -240,6 +243,20 @@
                     if (!control.isEmpty() && !control.isEmail()) {
                         return false;
                     } else return true;
+                }
+            }
+        );
+
+        /* INPUT RADIO SHOULD HAVE SELECTED VALUE */
+        
+        this.registerValidator(validators.data_radio_selected,
+            function (control) {
+                var validator_name = validators.data_radio_selected;
+                if (control.attr(validator_name) != null) {
+                    if (settings.debug) console.log("   Selected elements: " + $("#" + control.attr("id") + ":checked").length);
+                    if ($("#"+control.attr("id")+":checked").length > 0) {
+                        return true;
+                    } else return false;
                 }
             }
         );
