@@ -31,6 +31,7 @@
 * FLAGS:
 *   CONFIGURATION
 *     data-message-control: Control ID where to show the error message (should be with display:none); If not specified, uses standar text just after control.
+*     data-disable-validation: If the tag is in the control is not going to be validated
 *
 *   VALIDATORS
 *     data-required: Mark that element is required to be filled
@@ -73,7 +74,8 @@
         data_date_format: "data-date-format",
         data_select_value_different: "data-select-value-different",
         data_iban: "data-iban",
-        data_email: "data-email"
+        data_email: "data-email",
+        data_disable_validation: "data-disable-validation"
     };
 
     var validation_ok = true;   //Retorno, indica que por el momento todo es OK.
@@ -276,6 +278,10 @@
             this.settings = $.extend(settings, options);
         
         if (settings.debug) console.log("------------- #" + $(this).attr("id") + " ------------------");
+
+        //Check if we have to validate the field
+        if ($(this).attr(validators.data_disable_validation) != null) return true;
+
 
         //For every validator
         for (validator_name in active_validators) {
